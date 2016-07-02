@@ -104,12 +104,17 @@
 (global-unset-key "\e\e") ;unbind 'esc esc' to avoid common miskey
 
 (global-set-key "\C-o" 'find-file)
-(global-set-key "\C-p" 'goto-line )
 (global-set-key "\C-r" 'query-replace-regexp)
 (global-set-key "\C-g" 'goto-line )
 (global-set-key "\^c\^c" 'comment-region)
 (global-set-key "\C-c\C-u" 'uncomment-region)
 (global-set-key "\^C\^I" 'indent-region)
+
+(global-set-key (kbd "C-n")
+    (lambda () (interactive) (next-line 5)))
+
+(global-set-key (kbd "C-p")
+    (lambda () (interactive) (previous-line 5)))
 
 ;(require 'xcscope)
 ;(global-set-key [f1]  'cscope-set-initial-directory)
@@ -249,9 +254,10 @@
 ;; switch emacs frames
 (global-set-key [C-tab] 'other-window)
 
-(require 'multi-term)
-(global-set-key (kbd "C-x <C-up>") 'multi-term-next)
-(global-set-key (kbd "C-x <C-down>") 'multi-term-prev)
+(add-hook 'term-mode-hook
+          (lambda ()
+            (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+            (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 
 ;; MELPA Packages
 (require 'package)
@@ -337,3 +343,7 @@
     (error "Cannot resize window or frame horizontally"))))))
 
 (global-set-key (kbd "C-x W") 'fix-horizontal-size)
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)))
