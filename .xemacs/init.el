@@ -106,15 +106,8 @@
 (global-set-key "\C-o" 'find-file)
 (global-set-key "\C-r" 'query-replace-regexp)
 (global-set-key "\C-g" 'goto-line )
-(global-set-key "\^c\^c" 'comment-region)
-(global-set-key "\C-c\C-u" 'uncomment-region)
 (global-set-key "\^C\^I" 'indent-region)
-
-(global-set-key (kbd "C-n")
-    (lambda () (interactive) (next-line 5)))
-
-(global-set-key (kbd "C-p")
-    (lambda () (interactive) (previous-line 5)))
+(global-set-key "\C-xf" 'isearch-forward)
 
 ;(require 'xcscope)
 ;(global-set-key [f1]  'cscope-set-initial-directory)
@@ -137,7 +130,7 @@
 (global-set-key [f12] 'call-last-kbd-macro)
 
 (define-key global-map [(control ?q)]  'kill-buffer)
-(define-key global-map [(control ?f)]  'isearch-forward)
+;;(define-key global-map [(control ?f)]  'isearch-forward)
 (define-key isearch-mode-map [(control ?f)] 'isearch-repeat-forward)
 ;;(keyboard-translate ?\C-f ?\C-s)
 (global-set-key "\C-z" 'undo)
@@ -234,8 +227,15 @@
 (put 'upcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
+;; MELPA Packages
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-hook 'term-mode-hook (lambda()
+	(setq yas-dont-activate t)))
+
 ;; Start yasnippet at start
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.9.1")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.10.0")
 (require 'yasnippet)
 (yas/initialize)
 
@@ -246,10 +246,6 @@
 
 ;; Delete the whole line
 (global-set-key "\C-cd" 'kill-whole-line)
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
-(global-set-key (kbd "C-x <left>")  'windmove-left)
-(global-set-key (kbd "C-x <right>") 'windmove-right)
 
 ;; switch emacs frames
 (global-set-key [C-tab] 'other-window)
@@ -259,12 +255,6 @@
             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 
-;; MELPA Packages
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-hook 'term-mode-hook (lambda()
-	(setq yas-dont-activate t)))
 
 (defvar ansi-color-names-vector
   ["#101010" "#803030" "#4b762f" "#aa9943"
