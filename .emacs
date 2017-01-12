@@ -8,7 +8,11 @@
 (setq multi-term
       (expand-file-name "multi-term.el"
 			(expand-file-name ".xemacs" "~")))
+(setq window-numbering
+      (expand-file-name "window-numbering.el"
+			(expand-file-name ".xemacs" "~")))
 
+(load-file window-numbering)
 (load-file multi-term)
 (load-file user-init-file)
 (load-file custom-file)
