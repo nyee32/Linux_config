@@ -1,5 +1,8 @@
 ;; Nathan Yee default .emacs initialization file
 
+(setq package-enable-at-startup nil)
+(package-initialize)
+
 ;; Are we running XEmacs or Emacs?
 (defvar running-xemacs (string-match "XEmacs\\|Lucid" emacs-version))
 
@@ -227,17 +230,30 @@
 (put 'upcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
+; list the packages you want
+(setq package-list '(yasnippet auto-complete))
+
 ;; MELPA Packages
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-hook 'term-mode-hook (lambda()
-	(setq yas-dont-activate t)))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+
+; activate all the packages (in particular autoloads)
+(package-initialize)
+
+; fetch the list of packages available
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; Start yasnippet at start
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.10.0")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.11.0")
 (require 'yasnippet)
-(yas/initialize)
+(yas-global-mode 1)
 
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-1.5.1")
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-0.5.3")
