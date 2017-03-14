@@ -251,7 +251,7 @@
     (package-install package)))
 
 ;; Start yasnippet at start
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.11.0")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20170216.1928")
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -353,3 +353,4 @@
 (add-hook 'term-mode-hook
           (lambda ()
             (setq show-trailing-whitespace nil)))
+
