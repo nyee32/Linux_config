@@ -358,3 +358,10 @@
 ;; highlight the window number in pink color
 (custom-set-faces '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold)))))
 (window-numbering-mode 1)
+
+;;binding the key
+(global-set-key "\M-?" 'etags-select-find-tag-at-point)
+(global-set-key "\M-." 'etags-select-find-tag)
+
+;; Auto refresh buffers when they change on disk and not in the buffer
+(global-auto-revert-mode t)

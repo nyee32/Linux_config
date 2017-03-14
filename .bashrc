@@ -133,12 +133,15 @@ alias smd="ssh smd.schedmd.com"
 alias unix1="ssh nhyee@unix1.csc.calpoly.edu -X"
 alias unix2="ssh nhyee@unix2.csc.calpoly.edu -X"
 alias unix3="ssh nhyee@unix3.csc.calpoly.edu -X"
+alias unix13="ssh nhyee@unix13.csc.calpoly.edu -X"
 alias super="sudo bash"
 alias c="clear"
 alias exlinux="export SLURM_LOCAL_GLOBALS_FILE=globals.linux"
 alias expbs="export SLURM_LOCAL_GLOBALS_FILE=globals.pbs"
 alias rterm="rxvt"
 alias lr="ls -lrt"
+alias sml="~/sml/bin/sml"
+alias tags="find . -type f -iname \"*.[ch]\" | etags -"
 
 # Generate a core file on seg fault
 ulimit -c unlimited

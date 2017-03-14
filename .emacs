@@ -11,7 +11,11 @@
 (setq window-numbering
       (expand-file-name "window-numbering.el"
 			(expand-file-name ".xemacs" "~")))
+(setq etags-select
+      (expand-file-name "etags-select.el"
+			(expand-file-name ".xemacs" "~")))
 
+(load-file etags-select)
 (load-file window-numbering)
 (load-file multi-term)
 (load-file user-init-file)
