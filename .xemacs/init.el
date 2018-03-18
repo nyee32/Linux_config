@@ -5,10 +5,11 @@
 
 ;; Are we running XEmacs or Emacs?
 (defvar running-xemacs (string-match "XEmacs\\|Lucid" emacs-version))
+(set-scroll-bar-mode 'right)   ; replace 'right with 'left to place it to the left
 
 ;; Turn on font-lock mode for Emacs
 (cond ((not running-xemacs)
-       (global-font-lock-mode t)))
+	   (global-font-lock-mode t)))
 
 ;; Set the hostname without the suffix
 (setq host (system-name))
@@ -30,28 +31,28 @@
  c-mode-hook '(lambda ()
   (auto-fill-mode 1))
  c++-mode-hook '(lambda ()
-    (auto-fill-mode 1))
+	(auto-fill-mode 1))
  text-mode-hook '(lambda ()
-    (auto-fill-mode 1))
+	(auto-fill-mode 1))
  java-mode-hook '(lambda ()
-     (c-set-style "gnu")))
+	 (c-set-style "gnu")))
 
 ;;(if (not (fboundp 'php-mode))
 ;; Make it so PHP is handled like perl
 (setq auto-mode-alist (append (list (cons "\\.php\\'" 'perl-mode))
-			      auto-mode-alist))
+				  auto-mode-alist))
 ;;)
 
 ;; Make it so expect is handled like sh
 (setq auto-mode-alist (append (list (cons "\\.exp\\'" 'tcl-mode))
-			      auto-mode-alist))
+				  auto-mode-alist))
 ;; Make it so .m4 is handled like sh
 (setq auto-mode-alist (append (list (cons "\\.m4\\'" 'sh-mode))
-			      auto-mode-alist))
+				  auto-mode-alist))
 
 ;; Make javascript work like a c file
 (setq auto-mode-alist (append (list (cons "\\.js\\'" 'c-mode))
-			      auto-mode-alist))
+				  auto-mode-alist))
 
 
 (setq-default icon-title-format title)
@@ -69,16 +70,16 @@
 (defun stamp-region-active-p ()
   "Say whether the region is active."
   (and (boundp 'transient-mark-mode)
-       transient-mark-mode
-       (boundp 'mark-active)
-       mark-active))
+	   transient-mark-mode
+	   (boundp 'mark-active)
+	   mark-active))
 
 (defun delete-backward-region ()
   (setq transient-mark-mode t)
   (interactive)
   (if (not (stamp-region-active-p))
-      (delete-backward-char 1)
-      (kill-region (mark) (point))
+	  (delete-backward-char 1)
+	  (kill-region (mark) (point))
   )
   (set-mark nil)
   (setq transient-mark-mode nil)
@@ -100,7 +101,7 @@
 (require 'font-lock)
 ;; Turn on font-lock in all modes that support it
 (if (fboundp 'global-font-lock-mode)
-    (global-font-lock-mode t))
+	(global-font-lock-mode t))
 ;;(font-lock-make-faces t)
 (setq font-lock-maximum-decoration t)
 (set-default 'scroll-step 3)     ; so emacs won't recenter window when I scroll
@@ -163,34 +164,34 @@
 
 (setq inhibit-startup-message t)
 
-(setq initial-frame-alist
-      (cons
-       '(foreground-color  . "White")
-       initial-frame-alist))
-(setq initial-frame-alist
-      (cons
-       '(background-color  . "Black")
-       initial-frame-alist))
-(setq initial-frame-alist
-      (cons
-       '(cursor-color      . "Pink")
-       initial-frame-alist))
+;; (setq initial-frame-alist
+;;       (cons
+;;        '(foreground-color  . "White")
+;;        initial-frame-alist))
+;; (setq initial-frame-alist
+;;       (cons
+;;        '(background-color  . "Black")
+;;        initial-frame-alist))
+;; (setq initial-frame-alist
+;;       (cons
+;;        '(cursor-color      . "Pink")
+;;        initial-frame-alist))
 
 ;; Display settings
 ;; default size and color options for all frames
 ;; foreground, background, and cursor colors
 (setq default-frame-alist
-      (cons
-       '(foreground-color  . "White")
-       default-frame-alist))
+	  (cons
+	   '(foreground-color  . "White")
+	   default-frame-alist))
 (setq default-frame-alist
-      (cons
-       '(background-color  . "Black")
-       default-frame-alist))
+	  (cons
+	   '(background-color  . "Black")
+	   default-frame-alist))
 (setq default-frame-alist
-      (cons
-       '(cursor-color      . "Pink")
-       default-frame-alist))
+	  (cons
+	   '(cursor-color      . "Pink")
+	   default-frame-alist))
 ;;; ********************
 ;;; func-menu is a package that scans your source file for function
 ;;; definitions and makes a menubar entry that lets you jump to any
@@ -202,28 +203,28 @@
 ;;; David Hughes <ukchugd@ukpmr.cs.philips.nl>
 ;;;
 (cond (running-xemacs
-       (require 'func-menu)
-       (define-key global-map 'f8 'function-menu)
-       (add-hook 'find-file-hooks 'fume-add-menubar-entry)
-       (define-key global-map "\C-cl" 'fume-list-functions)
-       (define-key global-map "\C-cg" 'fume-prompt-function-goto)
+	   (require 'func-menu)
+	   (define-key global-map 'f8 'function-menu)
+	   (add-hook 'find-file-hooks 'fume-add-menubar-entry)
+	   (define-key global-map "\C-cl" 'fume-list-functions)
+	   (define-key global-map "\C-cg" 'fume-prompt-function-goto)
 
-       ;; The Hyperbole information manager package uses (shift button2) and
-       ;; (shift button3) to provide context-sensitive mouse keys.  If you
-       ;; use this next binding, it will conflict with Hyperbole's setup.
-       ;; Choose another mouse key if you use Hyperbole.
-       (define-key global-map '(shift button3) 'mouse-function-menu)
+	   ;; The Hyperbole information manager package uses (shift button2) and
+	   ;; (shift button3) to provide context-sensitive mouse keys.  If you
+	   ;; use this next binding, it will conflict with Hyperbole's setup.
+	   ;; Choose another mouse key if you use Hyperbole.
+	   (define-key global-map '(shift button3) 'mouse-function-menu)
 
-       ;; For descriptions of the following user-customizable variables,
-       ;; type C-h v <variable>
-       (setq fume-max-items 25
-	     fume-fn-window-position 1
-	     fume-auto-position-popup t
-	     fume-display-in-modeline-p t
-	     fume-menubar-menu-location "File"
-	     fume-buffer-name "*Function List*"
-	     fume-no-prompt-on-valid-default nil)
-       ))
+	   ;; For descriptions of the following user-customizable variables,
+	   ;; type C-h v <variable>
+	   (setq fume-max-items 25
+		 fume-fn-window-position 1
+		 fume-auto-position-popup t
+		 fume-display-in-modeline-p t
+		 fume-menubar-menu-location "File"
+		 fume-buffer-name "*Function List*"
+		 fume-no-prompt-on-valid-default nil)
+	   ))
 
 
 (put 'downcase-region 'disabled nil)
@@ -235,8 +236,8 @@
 
 ;; MELPA Packages
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+						 ("marmalade" . "https://marmalade-repo.org/packages/")
+						 ("melpa" . "https://melpa.org/packages/")))
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
@@ -248,7 +249,7 @@
 ; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
-    (package-install package)))
+	(package-install package)))
 
 ;; Start yasnippet at start
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20170216.1928")
@@ -267,9 +268,9 @@
 (global-set-key [C-tab] 'other-window)
 
 (add-hook 'term-mode-hook
-          (lambda ()
-            (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-            (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+		  (lambda ()
+			(add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+			(add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 
 
 (defvar ansi-color-names-vector
@@ -284,21 +285,21 @@
 ;; order of colours is wrong?
 (eval-after-load 'term
   '(progn
-     (let ((term-face-names (vector 'term-color-black
-                    'term-color-red
-                    'term-color-green
-                    'term-color-yellow
-                    'term-color-blue
-                    'term-color-magenta
-                    'term-color-cyan
-                    'term-color-white
-                    'term))
-       (term-color-names (vconcat ansi-color-names-vector ["#d2dec4"])))
-       (set-face-background 'term 'nil)
-       (cl-mapc 'set-face-foreground term-face-names term-color-names)
-       (custom-set-variables
-    '(term-default-bg-color "#000000")
-    '(term-default-fg-color "#dddd00")))))
+	 (let ((term-face-names (vector 'term-color-black
+					'term-color-red
+					'term-color-green
+					'term-color-yellow
+					'term-color-blue
+					'term-color-magenta
+					'term-color-cyan
+					'term-color-white
+					'term))
+	   (term-color-names (vconcat ansi-color-names-vector ["#d2dec4"])))
+	   (set-face-background 'term 'nil)
+	   (cl-mapc 'set-face-foreground term-face-names term-color-names)
+	   (custom-set-variables
+	'(term-default-bg-color "#000000")
+	'(term-default-fg-color "#dddd00")))))
 
 ;; newline-without-break-of-line
 (defun newline-without-break-of-line ()
@@ -307,8 +308,8 @@
 
   (interactive)
   (let ((oldpos (point)))
-    (end-of-line)
-    (newline-and-indent)))
+	(end-of-line)
+	(newline-and-indent)))
 
 (global-set-key (kbd "<C-return>") 'newline-without-break-of-line)
 
@@ -321,16 +322,16 @@
 
 ;; frame- or window-resizing function
 ;; from http://dse.livejournal.com/67732.html. Resizes either frame or window
-;; to 80 columns. If the window can be sized to 80 columns wide, without 
-;; resizing the frame itself, it will resize the window. Otherwise, it will 
-;; resize the frame. You can use a prefix argument to specify a 
+;; to 80 columns. If the window can be sized to 80 columns wide, without
+;; resizing the frame itself, it will resize the window. Otherwise, it will
+;; resize the frame. You can use a prefix argument to specify a
 ;; different column width
 (defun fix-frame-horizontal-size (width)
   "Set the frame's size to 80 (or prefix arg WIDTH) columns wide."
   (interactive "P")
   (if window-system
-      (set-frame-width (selected-frame) (or width 80))
-    (error "Cannot resize frame horizontally: is a text terminal")))
+	  (set-frame-width (selected-frame) (or width 80))
+	(error "Cannot resize frame horizontally: is a text terminal")))
 
 (defun fix-window-horizontal-size (width)
   "Set the window's size to 80 (or prefix arg WIDTH) columns wide."
@@ -341,18 +342,18 @@
   "Set the window's or frame's width to 80 (or prefix arg WIDTH)."
   (interactive "P")
   (condition-case nil
-      (fix-window-horizontal-size width)
-    (error 
-     (condition-case nil
-     (fix-frame-horizontal-size width)
-       (error
-    (error "Cannot resize window or frame horizontally"))))))
+	  (fix-window-horizontal-size width)
+	(error
+	 (condition-case nil
+	 (fix-frame-horizontal-size width)
+	   (error
+	(error "Cannot resize window or frame horizontally"))))))
 
 (global-set-key (kbd "C-x W") 'fix-horizontal-size)
 
 (add-hook 'term-mode-hook
-          (lambda ()
-            (setq show-trailing-whitespace nil)))
+		  (lambda ()
+			(setq show-trailing-whitespace nil)))
 
 (require 'window-numbering)
 ;; highlight the window number in pink color
@@ -366,3 +367,16 @@
 ;; Auto refresh buffers when they change on disk and not in the buffer
 (global-auto-revert-mode t)
 
+;; Load dracula theme at startup
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'dracula t)
+
+;; Replace BufferMenu to iBuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+;; Turn on delete highlighted stuff
+(delete-selection-mode t)
+
+;; Dired keybinds
+(define-key dired-mode-map ";" 'dired-jump) ;; go up directory

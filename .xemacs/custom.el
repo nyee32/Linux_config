@@ -1,27 +1,13 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(cperl-indent-level 8)
- '(display-time-mode t)
- '(flyspell-prog-mode t)
- '(font-menu-this-frame-only-p t)
- '(nil nil t)
- '(paren-mode (quote paren) nil (paren))
- '(pc-selection-mode t nil (pc-select))
- '(perl-continued-brace-offset -8)
- '(perl-continued-statement-offset 8)
- '(perl-indent-level 8)
- '(scroll-bar-mode (quote right))
- '(show-paren-mode t nil (paren))
- '(show-trailing-whitespace t)
- '(tcl-indent-level 8)
- '(tool-bar-mode nil nil (tool-bar))
- '(toolbar-visible-p nil)
- '(undo-limit 2000000)
- '(undo-outer-limit 30000000)
- '(undo-strong-limit 3000000))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+	(yasnippet dracula-theme dired-subtree auto-complete)))
+ '(term-default-bg-color "#000000")
+ '(term-default-fg-color "#dddd00"))
 (cond (running-xemacs
 (custom-set-faces
  '(default ((t (:foreground "white" :background "black" :size "12pt" :family ""))) t)
@@ -57,8 +43,8 @@
  '(widget-inactive-face ((((class grayscale color) (background dark)) (:foreground "darkgray"))))
  '(zmacs-region ((t (:background "blue3"))) t))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))

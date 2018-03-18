@@ -1,25 +1,25 @@
-emacs*Background: grey5
-emacs*Foreground:  Wheat
-emacs*pointerColor: red
-emacs*cursorColor: red
-!emacs*bitmapIcon: on
-!emacs*font: fixed
-! below needed for emacs23+ used to just be fixed
+! emacs*Background: grey1
+! emacs*Foreground:  Wheat
+! emacs*pointerColor: red
+! emacs*cursorColor: red
+! !emacs*bitmapIcon: on
+! !emacs*font: fixed
+! ! below needed for emacs23+ used to just be fixed
 emacs*font: 6x13
-emacs*geometry: 80x50
+emacs*geometry: 100x50
 emacs*Tabs*background: Blue
 emacs*toolBar: 0
 
 
-xemacs*Background: black
-xemacs*Foreground:  Wheat
-xemacs*pointerColor: Orchid
-xemacs*cursorColor: red
+emacs*Background: #737373
+emacs*Foreground: #cecece
+! xemacs*pointerColor: Orchid
+! xemacs*cursorColor: red
 !xemacs*bitmapIcon: on
 !xemacs*font: fixed
-xemacs*Tabs*background: Blue
-xemacs*ScrollBar.Background: skyblue
-xemacs*ScrollBar.troughColor: lightgray
+! xemacs*Tabs*background: Blue
+emacs*ScrollBar.Background: skyblue
+emacs*ScrollBar.troughColor: lightgray
 
 Emacs*XmTextField.translations: #override\n\
 	<Key>osfBackSpace:	delete-previous-character()\n\
