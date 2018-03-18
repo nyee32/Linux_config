@@ -377,6 +377,3 @@
 
 ;; Turn on delete highlighted stuff
 (delete-selection-mode t)
-
-;; Dired keybinds
-(define-key dired-mode-map ";" 'dired-jump) ;; go up directory
