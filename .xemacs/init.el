@@ -232,7 +232,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 ; list the packages you want
-(setq package-list '(yasnippet auto-complete))
+(setq package-list '(yasnippet auto-complete dracula-theme))
 
 ;; MELPA Packages
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -368,7 +368,7 @@
 (global-auto-revert-mode t)
 
 ;; Load dracula theme at startup
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/dracula-theme-20170412.845")
 (load-theme 'dracula t)
 
 ;; Replace BufferMenu to iBuffer
