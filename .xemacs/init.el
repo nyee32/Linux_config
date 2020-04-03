@@ -232,7 +232,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 ; list the packages you want
-(setq package-list '(yasnippet auto-complete dracula-theme helm))
+(setq package-list '(yasnippet auto-complete dracula-theme helm nyan-cat))
 
 ;; MELPA Packages
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -384,8 +384,6 @@
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 
-(helm-mode 1)
-
 (define-key global-map [remap find-file] 'helm-find-files)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 
@@ -393,8 +391,7 @@
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-      helm-ff-file-name-history-use-recentf t
-      helm-echo-input-in-header-line t)
+      helm-ff-file-name-history-use-recentf t)
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action ie. make tab completion work
 
@@ -402,3 +399,8 @@
 (setq helm-autoresize-max-height 0)
 (setq helm-autoresize-min-height 20)
 (helm-autoresize-mode 1)
+
+(helm-mode 1)
+
+;; Turn nyan-cat mode on
+(nyan-mode 1)
