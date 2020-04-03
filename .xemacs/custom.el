@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (yasnippet dired-subtree auto-complete)))
+ '(package-selected-packages (quote (helm yasnippet dired-subtree auto-complete)))
  '(term-default-bg-color "#000000")
  '(term-default-fg-color "#dddd00"))
 (cond (running-xemacs
